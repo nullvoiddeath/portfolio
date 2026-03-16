@@ -61,6 +61,72 @@
   --input: rgba(0, 0, 0, 0.08);
   --ring: #0a0a0a;
   --radius: 0px;
+
+  /* Theme tokens — light */
+  --t-bg: #FAFAFA;
+  --t-fg: 0, 0, 0;
+  --t-amber: 120, 80, 30;
+  --t-purple: 100, 50, 150;
+  --t-name-primary: rgba(0, 0, 0, 0.90);
+  --t-name-secondary: rgba(0, 0, 0, 0.35);
+  --t-body: rgba(0, 0, 0, 0.40);
+  --t-label: rgba(0, 0, 0, 0.20);
+  --t-label-hover: rgba(0, 0, 0, 0.70);
+  --t-border: rgba(0, 0, 0, 0.05);
+  --t-tag-border: rgba(0, 0, 0, 0.08);
+  --t-node: rgba(0, 0, 0, 0.35);
+  --t-node-hl: rgba(0, 0, 0, 0.70);
+  --t-edge: rgba(0, 0, 0, 0.12);
+  --t-wave: 0, 0, 0;
+  --t-cursor-bg: rgba(0, 0, 0, 0.30);
+  --t-hover-bg: #0a0a0a;
+  --t-hover-fg: #FAFAFA;
+  --t-scanline: rgba(0, 0, 0, 0.015);
+}
+
+.dark {
+  --background: #1a1612;
+  --foreground: #e8dfd4;
+
+  --card: #221e19;
+  --card-foreground: #e8dfd4;
+  --popover: #221e19;
+  --popover-foreground: #e8dfd4;
+
+  --primary: #e8dfd4;
+  --primary-foreground: #1a1612;
+  --secondary: #2a2520;
+  --secondary-foreground: #e8dfd4;
+  --muted: #2a2520;
+  --muted-foreground: #8a7e72;
+  --accent: #2a2520;
+  --accent-foreground: #e8dfd4;
+
+  --destructive: #dc2626;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #e8dfd4;
+
+  /* Theme tokens — dark */
+  --t-bg: #1a1612;
+  --t-fg: 232, 223, 212;
+  --t-amber: 200, 160, 90;
+  --t-purple: 160, 120, 200;
+  --t-name-primary: rgba(232, 223, 212, 0.90);
+  --t-name-secondary: rgba(232, 223, 212, 0.35);
+  --t-body: rgba(232, 223, 212, 0.40);
+  --t-label: rgba(232, 223, 212, 0.20);
+  --t-label-hover: rgba(232, 223, 212, 0.70);
+  --t-border: rgba(255, 255, 255, 0.06);
+  --t-tag-border: rgba(255, 255, 255, 0.10);
+  --t-node: rgba(232, 223, 212, 0.35);
+  --t-node-hl: rgba(232, 223, 212, 0.70);
+  --t-edge: rgba(232, 223, 212, 0.12);
+  --t-wave: 232, 223, 212;
+  --t-cursor-bg: rgba(232, 223, 212, 0.30);
+  --t-hover-bg: #e8dfd4;
+  --t-hover-fg: #1a1612;
+  --t-scanline: rgba(255, 255, 255, 0.02);
 }
 
 @layer base {
@@ -87,8 +153,8 @@
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.015) 2px,
-    rgba(0, 0, 0, 0.015) 4px
+    var(--t-scanline) 2px,
+    var(--t-scanline) 4px
   );
   z-index: 50;
 }
@@ -125,14 +191,14 @@
 
 @layer utilities {
   .section-divider {
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid var(--t-border);
   }
 
   .hover-invert {
     transition: none;
   }
   .hover-invert:hover {
-    background-color: #0a0a0a;
-    color: #FAFAFA;
+    background-color: var(--t-hover-bg);
+    color: var(--t-hover-fg);
   }
 }

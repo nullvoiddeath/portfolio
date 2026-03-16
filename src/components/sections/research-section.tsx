@@ -18,7 +18,7 @@ const reveal = {
 
 export function ResearchSection() {
   return (
-    <section id="research" className="noise-bg relative flex h-full items-center border-t border-black/5 px-4 py-10 md:px-8 lg:px-14">
+    <section id="research" className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
@@ -27,7 +27,7 @@ export function ResearchSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="text-[10px] uppercase tracking-[0.4em] md:text-xs"
-          style={{ color: "rgba(120, 80, 30, 0.70)" }}
+          style={{ color: "rgba(var(--t-amber), 0.70)" }}
         >
           003 — Research & Findings
         </motion.span>
@@ -38,7 +38,8 @@ export function ResearchSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-6 font-serif text-3xl font-medium text-black/80 md:text-4xl"
+          className="mt-6 font-serif text-3xl font-medium md:text-4xl"
+          style={{ color: "rgba(var(--t-fg), 0.80)" }}
         >
           Things I&apos;ve studied.
         </motion.h2>
@@ -52,17 +53,18 @@ export function ResearchSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="group border-t border-black/5 py-5 transition-colors duration-200 hover:bg-black/[0.02]"
+              className="group py-5 transition-colors duration-200"
+              style={{ borderTop: "1px solid var(--t-border)" }}
             >
               <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-2xl">
-                  <h3 className="font-serif text-lg font-medium text-black/70 transition-colors duration-200 group-hover:text-black/90 md:text-xl">
+                  <h3 className="font-serif text-lg font-medium md:text-xl" style={{ color: "rgba(var(--t-fg), 0.70)" }}>
                     {item.title}
                   </h3>
-                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.3em]" style={{ color: "rgba(120, 80, 30, 0.50)" }}>
+                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.3em]" style={{ color: "rgba(var(--t-amber), 0.50)" }}>
                     {item.subtitle}
                   </p>
-                  <p className="mt-2 text-xs leading-relaxed text-black/35 transition-colors duration-200 group-hover:text-black/50">
+                  <p className="mt-2 text-xs leading-relaxed" style={{ color: "rgba(var(--t-fg), 0.35)" }}>
                     {item.description}
                   </p>
                 </div>
@@ -71,7 +73,8 @@ export function ResearchSection() {
                   {item.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="border border-black/8 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-black/25"
+                      className="px-2 py-0.5 text-[9px] uppercase tracking-[0.2em]"
+                      style={{ border: "1px solid var(--t-tag-border)", color: "rgba(var(--t-fg), 0.25)" }}
                     >
                       {tag}
                     </span>

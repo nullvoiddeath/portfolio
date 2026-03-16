@@ -47,20 +47,25 @@ export function HeroText() {
         animate="visible"
         className="flex items-start justify-between"
       >
-        <span className="text-[10px] uppercase tracking-[0.4em] md:text-xs" style={{ color: "rgba(120, 80, 30, 0.70)" }}>
+        <span className="text-[10px] uppercase tracking-[0.4em] md:text-xs" style={{ color: "rgba(var(--t-amber), 0.70)" }}>
           Security Researcher
         </span>
-        <span className="text-[10px] uppercase tracking-[0.4em] md:text-xs" style={{ color: "rgba(120, 80, 30, 0.70)" }}>
+        <span className="text-[10px] uppercase tracking-[0.4em] md:text-xs" style={{ color: "rgba(var(--t-amber), 0.70)" }}>
           Kraków, PL
         </span>
       </motion.div>
       </div>
 
       {/* Center — the soul + journey */}
-      <div className="relative my-auto py-16 lg:flex lg:items-center lg:justify-between lg:gap-12">
+      <div className="relative my-auto py-16">
         {/* Mobile: graph as background */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-40 lg:hidden">
           <JourneyGraph background />
+        </div>
+
+        {/* Desktop: graph positioned center-right */}
+        <div className="pointer-events-auto absolute right-[2%] top-1/2 hidden -translate-y-1/2 lg:block">
+          <JourneyGraph />
         </div>
 
         <div className="relative z-10 max-w-2xl">
@@ -71,9 +76,9 @@ export function HeroText() {
             animate="visible"
             className="font-serif text-5xl font-medium leading-[1.05] tracking-[-0.02em] md:text-7xl lg:text-8xl"
           >
-            <span className="text-black/90">Adhyayan</span>
+            <span style={{ color: "var(--t-name-primary)" }}>Adhyayan</span>
             <br />
-            <span className="text-black/35">Panwar</span>
+            <span style={{ color: "var(--t-name-secondary)" }}>Panwar</span>
           </motion.h1>
 
           <motion.p
@@ -81,7 +86,8 @@ export function HeroText() {
             variants={reveal}
             initial="hidden"
             animate="visible"
-            className="mt-8 max-w-lg font-serif text-lg leading-relaxed text-black/40 md:text-xl"
+            className="mt-8 max-w-lg font-serif text-lg leading-relaxed md:text-xl"
+            style={{ color: "var(--t-body)" }}
           >
             I study the quiet fractures in systems
             that were never meant to hold.
@@ -94,17 +100,14 @@ export function HeroText() {
             animate="visible"
             className="mt-10 flex items-center gap-4"
           >
-            <span className="inline-block h-px w-16" style={{ backgroundColor: "rgba(120, 80, 30, 0.25)" }} />
-            <p className="text-[10px] uppercase tracking-[0.4em] md:text-xs" style={{ color: "rgba(120, 80, 30, 0.70)" }}>
+            <span className="inline-block h-px w-16" style={{ backgroundColor: "rgba(var(--t-amber), 0.25)" }} />
+            <p className="text-[10px] uppercase tracking-[0.4em] md:text-xs" style={{ color: "rgba(var(--t-amber), 0.70)" }}>
               API Security @ Akamai Technologies
-              <span className="cursor-blink ml-1 inline-block h-3 w-[5px] bg-black/30 align-middle" />
+              <span className="cursor-blink ml-1 inline-block h-3 w-[5px] align-middle" style={{ backgroundColor: "var(--t-cursor-bg)" }} />
             </p>
           </motion.div>
         </div>
 
-        <div className="hidden lg:block">
-          <JourneyGraph />
-        </div>
       </div>
 
       {/* Bottom — social links */}
@@ -122,13 +125,16 @@ export function HeroText() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover-invert px-1 py-0.5 text-[9px] uppercase tracking-[0.3em] text-black/20 md:text-[10px]"
+              className="px-1 py-0.5 text-[9px] uppercase tracking-[0.3em] transition-colors duration-150 md:text-[10px]"
+              style={{ color: "rgba(var(--t-fg), 0.35)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.70)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.35)")}
             >
               {link.label}
             </a>
           ))}
         </div>
-        <span className="hidden text-[9px] uppercase tracking-[0.4em] text-black/10 sm:inline md:text-[10px]">
+        <span className="hidden text-[9px] uppercase tracking-[0.4em] sm:inline md:text-[10px]" style={{ color: "rgba(var(--t-fg), 0.10)" }}>
           [scroll]
         </span>
       </motion.div>

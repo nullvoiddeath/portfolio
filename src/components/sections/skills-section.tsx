@@ -18,7 +18,7 @@ const reveal = {
 
 export function SkillsSection() {
   return (
-    <section className="noise-bg relative flex h-full items-center border-t border-black/5 px-4 py-10 md:px-8 lg:px-14">
+    <section className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
@@ -27,7 +27,7 @@ export function SkillsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="text-[10px] uppercase tracking-[0.4em] md:text-xs"
-          style={{ color: "rgba(120, 80, 30, 0.70)" }}
+          style={{ color: "rgba(var(--t-amber), 0.70)" }}
         >
           002 — Capabilities
         </motion.span>
@@ -38,7 +38,8 @@ export function SkillsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-8 font-serif text-3xl font-medium text-black/80 md:text-4xl"
+          className="mt-8 font-serif text-3xl font-medium md:text-4xl"
+          style={{ color: "rgba(var(--t-fg), 0.80)" }}
         >
           What I work with.
         </motion.h2>
@@ -53,13 +54,19 @@ export function SkillsSection() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-[10px] uppercase tracking-[0.3em] text-black/50">
+              <h3 className="text-[10px] uppercase tracking-[0.3em]" style={{ color: "rgba(var(--t-fg), 0.50)" }}>
                 {category.title}
               </h3>
-              <div className="mt-4 h-px w-full bg-black/10" />
+              <div className="mt-4 h-px w-full" style={{ backgroundColor: "rgba(var(--t-fg), 0.10)" }} />
               <ul className="mt-4 space-y-2">
                 {category.items.map((item) => (
-                  <li key={item} className="text-xs text-black/35 transition-colors duration-150 hover:text-black/70">
+                  <li
+                    key={item}
+                    className="text-xs transition-colors duration-150"
+                    style={{ color: "rgba(var(--t-fg), 0.35)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.70)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.35)")}
+                  >
                     {item}
                   </li>
                 ))}

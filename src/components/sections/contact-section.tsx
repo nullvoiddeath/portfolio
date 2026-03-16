@@ -25,7 +25,7 @@ const contactLinks = [
 
 export function ContactSection() {
   return (
-    <section id="contact" className="noise-bg relative flex h-full items-center border-t border-black/5 px-4 py-10 md:px-8 lg:px-14">
+    <section id="contact" className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
@@ -34,7 +34,7 @@ export function ContactSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="text-[10px] uppercase tracking-[0.4em] md:text-xs"
-          style={{ color: "rgba(120, 80, 30, 0.70)" }}
+          style={{ color: "rgba(var(--t-amber), 0.70)" }}
         >
           005 — Contact
         </motion.span>
@@ -45,7 +45,8 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-8 font-serif text-3xl font-medium text-black/80 md:text-4xl lg:text-5xl"
+          className="mt-8 font-serif text-3xl font-medium md:text-4xl lg:text-5xl"
+          style={{ color: "rgba(var(--t-fg), 0.80)" }}
         >
           Let&apos;s talk.
         </motion.h2>
@@ -56,7 +57,8 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-6 max-w-lg text-sm leading-relaxed text-black/35 md:text-base"
+          className="mt-6 max-w-lg text-sm leading-relaxed md:text-base"
+          style={{ color: "rgba(var(--t-fg), 0.35)" }}
         >
           Whether it&apos;s about API security, threat research, or something
           entirely different — I&apos;m always open to a conversation.
@@ -74,12 +76,27 @@ export function ContactSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="group border-t border-black/5 py-8 transition-colors duration-200 hover:bg-black hover:text-white lg:border-l lg:border-t-0 lg:px-8 lg:first:border-l-0 lg:first:pl-0"
+              className="group py-8 transition-colors duration-200 lg:px-8"
+              style={{ borderTop: "1px solid var(--t-border)" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--t-hover-bg)";
+                const label = e.currentTarget.querySelector("[data-label]") as HTMLElement;
+                const sub = e.currentTarget.querySelector("[data-sub]") as HTMLElement;
+                if (label) label.style.color = "var(--t-hover-fg)";
+                if (sub) sub.style.color = "var(--t-hover-fg)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                const label = e.currentTarget.querySelector("[data-label]") as HTMLElement;
+                const sub = e.currentTarget.querySelector("[data-sub]") as HTMLElement;
+                if (label) label.style.color = "var(--t-label)";
+                if (sub) sub.style.color = "rgba(var(--t-fg), 0.60)";
+              }}
             >
-              <span className="text-[10px] uppercase tracking-[0.3em] text-black/20 transition-colors duration-200 group-hover:text-white/40">
+              <span data-label className="text-[10px] uppercase tracking-[0.3em] transition-colors duration-200" style={{ color: "var(--t-label)" }}>
                 {link.label}
               </span>
-              <p className="mt-2 text-sm text-black/60 transition-colors duration-200 group-hover:text-white/90">
+              <p data-sub className="mt-2 text-sm transition-colors duration-200" style={{ color: "rgba(var(--t-fg), 0.60)" }}>
                 {link.sub}
               </p>
             </motion.a>
@@ -93,12 +110,13 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-32 flex items-end justify-between border-t border-black/5 pt-8"
+          className="mt-32 flex items-end justify-between pt-8"
+          style={{ borderTop: "1px solid var(--t-border)" }}
         >
-          <span className="text-[9px] uppercase tracking-[0.4em] text-black/15">
+          <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "rgba(var(--t-fg), 0.15)" }}>
             {siteConfig.name} — {new Date().getFullYear()}
           </span>
-          <span className="text-[9px] uppercase tracking-[0.4em] text-black/15">
+          <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "rgba(var(--t-fg), 0.15)" }}>
             Kraków, Poland
           </span>
         </motion.div>

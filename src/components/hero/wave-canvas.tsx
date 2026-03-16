@@ -21,6 +21,26 @@ export function WaveCanvas() {
     let targetMouseX = -1;
     let targetMouseY = -1;
 
+    // Theme colors — read from CSS vars
+    let waveRGB = "0, 0, 0";
+    let purpleRGB = "100, 50, 150";
+    let bgColor = "#FAFAFA";
+
+    const readThemeColors = () => {
+      const style = getComputedStyle(document.documentElement);
+      waveRGB = style.getPropertyValue("--t-wave").trim() || "0, 0, 0";
+      purpleRGB = style.getPropertyValue("--t-purple").trim() || "100, 50, 150";
+      bgColor = style.getPropertyValue("--t-bg").trim() || "#FAFAFA";
+    };
+
+    readThemeColors();
+
+    const onThemeChange = () => {
+      // Small delay to let CSS vars update
+      setTimeout(readThemeColors, 50);
+    };
+    window.addEventListener("themechange", onThemeChange);
+
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
       w = canvas.offsetWidth;
@@ -78,7 +98,9 @@ export function WaveCanvas() {
     const cursorRadius = 200;
 
     const draw = () => {
-      ctx.clearRect(0, 0, w, h);
+      // Fill with theme background
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, w, h);
 
       // Smooth mouse tracking (using viewport coords since canvas is fixed)
       if (targetMouseX < 0) {
@@ -120,7 +142,7 @@ export function WaveCanvas() {
           ctx.lineTo(x, y);
         }
 
-        ctx.strokeStyle = `rgba(0, 0, 0, ${layer.alpha})`;
+        ctx.strokeStyle = `rgba(${waveRGB}, ${layer.alpha})`;
         ctx.lineWidth = 1;
         ctx.stroke();
 
@@ -147,7 +169,7 @@ export function WaveCanvas() {
 
           ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = `rgba(100, 50, 150, ${layer.alpha})`;
+        ctx.strokeStyle = `rgba(${purpleRGB}, ${layer.alpha})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
@@ -163,13 +185,13 @@ export function WaveCanvas() {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseleave", onMouseLeave);
+      window.removeEventListener("themechange", onThemeChange);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      style={{ backgroundColor: "#FAFAFA" }}
       className="pointer-events-none fixed inset-0 z-0 h-full w-full"
       aria-hidden="true"
     />

@@ -12,7 +12,7 @@ const navItems = [
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(0); // 0 on hero, 1 elsewhere
+  const [visible, setVisible] = useState(0);
 
   useEffect(() => {
     const onSlideChange = (e: Event) => {
@@ -31,8 +31,8 @@ export function Navbar() {
       <nav className="flex items-center justify-between px-4 py-5 md:px-8 lg:px-14">
         <a
           href="#"
-          className="text-[10px] uppercase tracking-[0.4em] text-black/50 transition-opacity duration-700 hover:text-black md:text-xs"
-          style={{ opacity: visible }}
+          className="text-[10px] uppercase tracking-[0.4em] transition-opacity duration-700 md:text-xs"
+          style={{ opacity: visible, color: "rgba(var(--t-fg), 0.50)" }}
         >
           {siteConfig.name}
         </a>
@@ -46,7 +46,10 @@ export function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              className="text-[10px] uppercase tracking-[0.3em] text-black/25 transition-none hover:text-black/60"
+              className="text-[10px] uppercase tracking-[0.3em] transition-none"
+              style={{ color: "rgba(var(--t-fg), 0.25)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.60)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.25)")}
             >
               {item.label}
             </a>
@@ -56,21 +59,22 @@ export function Navbar() {
         {/* Mobile */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-[10px] uppercase tracking-[0.4em] text-black/30 transition-opacity duration-700 md:hidden"
-          style={{ opacity: visible }}
+          className="text-[10px] uppercase tracking-[0.4em] transition-opacity duration-700 md:hidden"
+          style={{ opacity: visible, color: "rgba(var(--t-fg), 0.30)" }}
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
       </nav>
 
       {menuOpen && (
-        <div className="border-t border-black/5 bg-[#FAFAFA] md:hidden">
+        <div className="border-t md:hidden" style={{ borderColor: "var(--t-border)", backgroundColor: "var(--t-bg)" }}>
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className="block px-6 py-4 text-xs uppercase tracking-[0.3em] text-black/40 transition-none hover:bg-black/5 hover:text-black"
+              className="block px-6 py-4 text-xs uppercase tracking-[0.3em] transition-none"
+              style={{ color: "rgba(var(--t-fg), 0.40)" }}
             >
               {item.label}
             </a>

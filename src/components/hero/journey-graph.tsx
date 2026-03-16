@@ -88,7 +88,7 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
       className={
         background
           ? "w-full max-w-[500px]"
-          : "w-full max-w-[340px] mx-auto lg:mx-0 lg:w-[420px] lg:max-w-none lg:shrink-0 xl:w-[500px]"
+          : "w-full max-w-[340px] mx-auto lg:mx-0 lg:w-[520px] lg:max-w-none lg:shrink-0 xl:w-[600px]"
       }
     >
       <svg
@@ -111,7 +111,7 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
               y1={a.y}
               x2={b.x}
               y2={b.y}
-              stroke="rgba(0,0,0,0.12)"
+              stroke="var(--t-edge)"
               strokeWidth={1}
             />
           );
@@ -133,7 +133,7 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
               y1={a.y + 1.5}
               x2={b.x + 1.5}
               y2={b.y + 1.5}
-              stroke="rgba(100,50,150,0.08)"
+              stroke="rgba(var(--t-purple), 0.08)"
               strokeWidth={0.5}
             />
           );
@@ -157,7 +157,7 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
                 cy={node.y}
                 r={node.size + 4}
                 fill="none"
-                stroke="rgba(120,80,30,0.25)"
+                stroke="rgba(var(--t-amber), 0.25)"
                 strokeWidth={1}
                 variants={{
                   hovered: { r: node.size + 7, strokeOpacity: 0.5 },
@@ -172,10 +172,10 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
               cy={node.y}
               r={node.size + 2}
               fill="none"
-              stroke="rgba(100,50,150,0.15)"
+              stroke="rgba(var(--t-purple), 0.15)"
               strokeWidth={0.5}
               variants={{
-                hovered: { r: node.size + 5, stroke: "rgba(100,50,150,0.30)" },
+                hovered: { r: node.size + 5, stroke: "rgba(var(--t-purple), 0.30)" },
               }}
               transition={{ duration: 0.25, ease: "easeOut" }}
             />
@@ -185,11 +185,11 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
               cx={node.x}
               cy={node.y}
               r={node.size}
-              fill={node.highlight ? "rgba(0,0,0,0.70)" : "rgba(0,0,0,0.35)"}
+              fill={node.highlight ? "var(--t-node-hl)" : "var(--t-node)"}
               variants={{
                 hovered: {
                   r: node.size + 2,
-                  fill: node.highlight ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.55)",
+                  fill: node.highlight ? "rgba(var(--t-fg), 0.85)" : "rgba(var(--t-fg), 0.55)",
                 },
               }}
               transition={{ duration: 0.2, ease: "easeOut" }}
@@ -222,10 +222,10 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                   }}
-                  fill={node.highlight ? "rgba(0,0,0,0.75)" : "rgba(0,0,0,0.20)"}
+                  fill={node.highlight ? "rgba(var(--t-fg), 0.75)" : "var(--t-label)"}
                   variants={{
                     hovered: {
-                      fill: node.highlight ? "rgba(0,0,0,0.95)" : "rgba(0,0,0,0.70)",
+                      fill: node.highlight ? "rgba(var(--t-fg), 0.95)" : "var(--t-label-hover)",
                     },
                   }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
@@ -244,10 +244,10 @@ export function JourneyGraph({ background = false }: { background?: boolean }) {
                       fontSize: "6.5px",
                       letterSpacing: "0.05em",
                     }}
-                    fill={node.highlight ? "rgba(120,80,30,0.60)" : "rgba(120,80,30,0.25)"}
+                    fill={node.highlight ? "rgba(var(--t-amber), 0.60)" : "rgba(var(--t-amber), 0.25)"}
                     variants={{
                       hovered: {
-                        fill: "rgba(120,80,30,0.85)",
+                        fill: "rgba(var(--t-amber), 0.85)",
                       },
                     }}
                     transition={{ duration: 0.2, ease: "easeOut" }}

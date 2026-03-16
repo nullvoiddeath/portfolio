@@ -18,7 +18,7 @@ const reveal = {
 
 export function AboutSection() {
   return (
-    <section id="about" className="noise-bg relative flex h-full items-center border-t border-black/5 px-4 py-10 md:px-8 lg:px-14">
+    <section id="about" className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         {/* Section label */}
         <motion.span
@@ -28,7 +28,7 @@ export function AboutSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="text-[10px] uppercase tracking-[0.4em] md:text-xs"
-          style={{ color: "rgba(120, 80, 30, 0.70)" }}
+          style={{ color: "rgba(var(--t-amber), 0.70)" }}
         >
           001 — About
         </motion.span>
@@ -42,7 +42,8 @@ export function AboutSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="font-serif text-3xl font-medium leading-snug text-black/80 md:text-4xl"
+              className="font-serif text-3xl font-medium leading-snug md:text-4xl"
+              style={{ color: "rgba(var(--t-fg), 0.80)" }}
             >
               I break things to understand how they hold together.
             </motion.h2>
@@ -53,7 +54,8 @@ export function AboutSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="mt-8 space-y-5 text-sm leading-relaxed text-black/40 md:text-base"
+              className="mt-8 space-y-5 text-sm leading-relaxed md:text-base"
+              style={{ color: "var(--t-body)" }}
             >
               <p>
                 I&apos;m a security researcher at Akamai Technologies in Kraków, Poland,
@@ -87,14 +89,14 @@ export function AboutSection() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              <span className="text-[9px] uppercase tracking-[0.4em] text-black/20">
+              <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
                 Certifications
               </span>
               <div className="mt-4 space-y-4">
                 {certifications.map((cert) => (
-                  <div key={cert.name} className="border-l border-black/10 pl-4">
-                    <span className="text-sm font-medium text-black/70">{cert.name}</span>
-                    <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] text-black/25">
+                  <div key={cert.name} className="pl-4" style={{ borderLeft: "1px solid rgba(var(--t-fg), 0.10)" }}>
+                    <span className="text-sm font-medium" style={{ color: "rgba(var(--t-fg), 0.70)" }}>{cert.name}</span>
+                    <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
                       {cert.full}
                     </p>
                   </div>
@@ -110,12 +112,12 @@ export function AboutSection() {
               viewport={{ once: true, margin: "-100px" }}
               className="mt-12"
             >
-              <span className="text-[9px] uppercase tracking-[0.4em] text-black/20">
+              <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
                 Currently
               </span>
-              <div className="mt-4 border-l border-black/10 pl-4">
-                <span className="text-sm text-black/70">Security Architect II</span>
-                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(120, 80, 30, 0.50)" }}>
+              <div className="mt-4 pl-4" style={{ borderLeft: "1px solid rgba(var(--t-fg), 0.10)" }}>
+                <span className="text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Security Architect II</span>
+                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(var(--t-amber), 0.50)" }}>
                   Akamai Technologies
                 </p>
               </div>
@@ -129,12 +131,12 @@ export function AboutSection() {
               viewport={{ once: true, margin: "-100px" }}
               className="mt-12"
             >
-              <span className="text-[9px] uppercase tracking-[0.4em] text-black/20">
+              <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
                 Location
               </span>
-              <div className="mt-4 border-l border-black/10 pl-4">
-                <span className="text-sm text-black/70">Kraków, Poland</span>
-                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] text-black/25">
+              <div className="mt-4 pl-4" style={{ borderLeft: "1px solid rgba(var(--t-fg), 0.10)" }}>
+                <span className="text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Kraków, Poland</span>
+                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
                   CET / UTC+1
                 </p>
               </div>

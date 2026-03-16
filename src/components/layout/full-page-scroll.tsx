@@ -151,8 +151,8 @@ export function FullPageScroll({ children }: FullPageScrollProps) {
               className="block h-1.5 w-1.5 transition-all duration-300"
               style={{
                 backgroundColor: i === currentSlide
-                  ? "rgba(0, 0, 0, 0.5)"
-                  : "rgba(0, 0, 0, 0.1)",
+                  ? "rgba(var(--t-fg), 0.5)"
+                  : "rgba(var(--t-fg), 0.1)",
                 transform: i === currentSlide ? "scale(1.5)" : "scale(1)",
               }}
             />
