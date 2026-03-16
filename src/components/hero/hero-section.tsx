@@ -4,7 +4,7 @@ import { HeroText } from "./hero-text";
 
 export function HeroSection() {
   return (
-    <section className="snap-section noise-bg scanlines relative flex min-h-screen items-center overflow-hidden">
+    <section className="noise-bg scanlines relative flex h-full items-center overflow-hidden">
       <HeroText />
     </section>
   );

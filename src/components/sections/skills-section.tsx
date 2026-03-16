@@ -18,8 +18,8 @@ const reveal = {
 
 export function SkillsSection() {
   return (
-    <section className="snap-section noise-bg relative border-t border-black/5 px-6 py-32 md:px-12 lg:px-20">
-      <div className="mx-auto max-w-5xl">
+    <section className="noise-bg relative flex h-full items-center border-t border-black/5 px-4 py-10 md:px-8 lg:px-14">
+      <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
           variants={reveal}

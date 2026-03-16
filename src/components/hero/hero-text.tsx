@@ -28,18 +28,16 @@ export function HeroText() {
   const [scrollFade, setScrollFade] = useState(1);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Fade out over the first 150px of scroll
-      const fade = Math.max(1 - window.scrollY / 150, 0);
-      setScrollFade(fade);
+    const onSlideChange = (e: Event) => {
+      const slide = (e as CustomEvent).detail.slide;
+      setScrollFade(slide === 0 ? 1 : 0);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("slidechange", onSlideChange);
+    return () => window.removeEventListener("slidechange", onSlideChange);
   }, []);
 
   return (
-    <div className="relative z-10 flex w-full flex-col justify-between px-6 py-24 md:px-12 lg:px-20" style={{ minHeight: "100vh" }}>
+    <div className="relative z-10 flex h-full w-full flex-col justify-between px-4 py-16 md:px-8 lg:px-14">
       {/* Top bar — clinical metadata (fades out on scroll) */}
       <div style={{ opacity: scrollFade }}>
       <motion.div

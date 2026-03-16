@@ -18,8 +18,8 @@ const reveal = {
 
 export function ResearchSection() {
   return (
-    <section id="research" className="snap-section noise-bg relative border-t border-black/5 px-6 py-32 md:px-12 lg:px-20">
-      <div className="mx-auto max-w-5xl">
+    <section id="research" className="noise-bg relative flex h-full items-center border-t border-black/5 px-4 py-10 md:px-8 lg:px-14">
+      <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
           variants={reveal}
@@ -38,12 +38,12 @@ export function ResearchSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-8 font-serif text-3xl font-medium text-black/80 md:text-4xl"
+          className="mt-6 font-serif text-3xl font-medium text-black/80 md:text-4xl"
         >
           Things I&apos;ve studied.
         </motion.h2>
 
-        <div className="mt-16 space-y-0">
+        <div className="mt-10 space-y-0">
           {research.map((item, idx) => (
             <motion.div
               key={item.id}
@@ -52,17 +52,17 @@ export function ResearchSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="group border-t border-black/5 py-10 transition-colors duration-200 hover:bg-black/[0.02]"
+              className="group border-t border-black/5 py-5 transition-colors duration-200 hover:bg-black/[0.02]"
             >
-              <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-2xl">
-                  <h3 className="font-serif text-xl font-medium text-black/70 transition-colors duration-200 group-hover:text-black/90 md:text-2xl">
+                  <h3 className="font-serif text-lg font-medium text-black/70 transition-colors duration-200 group-hover:text-black/90 md:text-xl">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.3em]" style={{ color: "rgba(120, 80, 30, 0.50)" }}>
+                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.3em]" style={{ color: "rgba(120, 80, 30, 0.50)" }}>
                     {item.subtitle}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-black/35 transition-colors duration-200 group-hover:text-black/50">
+                  <p className="mt-2 text-xs leading-relaxed text-black/35 transition-colors duration-200 group-hover:text-black/50">
                     {item.description}
                   </p>
                 </div>

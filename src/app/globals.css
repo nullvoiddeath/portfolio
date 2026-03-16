@@ -73,7 +73,7 @@
   }
   html {
     @apply font-mono;
-    scroll-snap-type: y proximity;
+    overflow: hidden;
   }
 }
 
@@ -102,9 +102,10 @@
   animation: blink 1s step-end infinite;
 }
 
-/* Scroll snap sections */
+/* Full-page slide sections */
 .snap-section {
-  scroll-snap-align: start;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Noise grain background */
