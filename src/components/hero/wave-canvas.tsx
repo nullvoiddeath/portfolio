@@ -34,9 +34,8 @@ export function WaveCanvas() {
     window.addEventListener("resize", resize);
 
     const onMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      targetMouseX = e.clientX - rect.left;
-      targetMouseY = e.clientY - rect.top;
+      targetMouseX = e.clientX;
+      targetMouseY = e.clientY;
     };
 
     const onMouseLeave = () => {
@@ -47,23 +46,32 @@ export function WaveCanvas() {
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseleave", onMouseLeave);
 
-    // Wave layers — each with different speed, amplitude, frequency
+    // Wave layers spread across full viewport height
     const layers = [
-      { y: 0.15, amp: 16, freq: 0.010, speed: 0.014, alpha: 0.12 },
-      { y: 0.20, amp: 13, freq: 0.009, speed: 0.013, alpha: 0.14 },
-      { y: 0.25, amp: 17, freq: 0.007, speed: 0.011, alpha: 0.16 },
-      { y: 0.30, amp: 18, freq: 0.008, speed: 0.012, alpha: 0.18 },
-      { y: 0.35, amp: 14, freq: 0.010, speed: 0.015, alpha: 0.15 },
-      { y: 0.40, amp: 20, freq: 0.006, speed: 0.010, alpha: 0.20 },
-      { y: 0.45, amp: 12, freq: 0.012, speed: 0.018, alpha: 0.14 },
-      { y: 0.50, amp: 22, freq: 0.007, speed: 0.008, alpha: 0.18 },
-      { y: 0.55, amp: 16, freq: 0.009, speed: 0.014, alpha: 0.16 },
-      { y: 0.60, amp: 19, freq: 0.011, speed: 0.011, alpha: 0.20 },
-      { y: 0.65, amp: 10, freq: 0.013, speed: 0.020, alpha: 0.14 },
-      { y: 0.70, amp: 24, freq: 0.005, speed: 0.009, alpha: 0.18 },
-      { y: 0.75, amp: 15, freq: 0.008, speed: 0.016, alpha: 0.16 },
-      { y: 0.80, amp: 11, freq: 0.014, speed: 0.019, alpha: 0.14 },
-      { y: 0.85, amp: 20, freq: 0.006, speed: 0.010, alpha: 0.16 },
+      { y: 0.06, amp: 16, freq: 0.010, speed: 0.014, alpha: 0.12 },
+      { y: 0.10, amp: 13, freq: 0.009, speed: 0.013, alpha: 0.14 },
+      { y: 0.14, amp: 17, freq: 0.007, speed: 0.011, alpha: 0.16 },
+      { y: 0.18, amp: 18, freq: 0.008, speed: 0.012, alpha: 0.18 },
+      { y: 0.22, amp: 14, freq: 0.010, speed: 0.015, alpha: 0.15 },
+      { y: 0.26, amp: 20, freq: 0.006, speed: 0.010, alpha: 0.20 },
+      { y: 0.30, amp: 12, freq: 0.012, speed: 0.018, alpha: 0.14 },
+      { y: 0.34, amp: 22, freq: 0.007, speed: 0.008, alpha: 0.18 },
+      { y: 0.38, amp: 16, freq: 0.009, speed: 0.014, alpha: 0.16 },
+      { y: 0.42, amp: 19, freq: 0.011, speed: 0.011, alpha: 0.20 },
+      { y: 0.46, amp: 10, freq: 0.013, speed: 0.020, alpha: 0.14 },
+      { y: 0.50, amp: 24, freq: 0.005, speed: 0.009, alpha: 0.18 },
+      { y: 0.54, amp: 15, freq: 0.008, speed: 0.016, alpha: 0.16 },
+      { y: 0.58, amp: 11, freq: 0.014, speed: 0.019, alpha: 0.14 },
+      { y: 0.62, amp: 20, freq: 0.006, speed: 0.010, alpha: 0.16 },
+      { y: 0.66, amp: 14, freq: 0.010, speed: 0.015, alpha: 0.15 },
+      { y: 0.70, amp: 18, freq: 0.007, speed: 0.012, alpha: 0.18 },
+      { y: 0.74, amp: 13, freq: 0.009, speed: 0.013, alpha: 0.14 },
+      { y: 0.78, amp: 21, freq: 0.006, speed: 0.010, alpha: 0.17 },
+      { y: 0.82, amp: 16, freq: 0.008, speed: 0.016, alpha: 0.16 },
+      { y: 0.86, amp: 12, freq: 0.011, speed: 0.019, alpha: 0.14 },
+      { y: 0.90, amp: 19, freq: 0.007, speed: 0.009, alpha: 0.18 },
+      { y: 0.94, amp: 15, freq: 0.009, speed: 0.014, alpha: 0.15 },
+      { y: 0.98, amp: 17, freq: 0.006, speed: 0.010, alpha: 0.16 },
     ];
 
     let t = 0;
@@ -72,7 +80,7 @@ export function WaveCanvas() {
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
-      // Smooth mouse tracking
+      // Smooth mouse tracking (using viewport coords since canvas is fixed)
       if (targetMouseX < 0) {
         mouseX += (mouseX < 0 ? 0 : -mouseX) * 0.05;
         mouseY += (mouseY < 0 ? 0 : -mouseY) * 0.05;
@@ -98,7 +106,7 @@ export function WaveCanvas() {
             Math.sin(x * layer.freq * 2.3 + t * layer.speed * 0.5 + 1.5) * layer.amp * 0.4 +
             Math.sin(x * layer.freq * 0.5 + t * layer.speed * 0.3 + 3.0) * layer.amp * 0.6;
 
-          // Cursor repulsion — push waves away from mouse
+          // Cursor repulsion
           if (mouseX > 0) {
             const dx = x - mouseX;
             const dy = y - mouseY;
@@ -116,7 +124,7 @@ export function WaveCanvas() {
         ctx.lineWidth = 1;
         ctx.stroke();
 
-        // Purple shadow line — slightly offset
+        // Purple shadow line
         const purpleBaseY = baseY + 3;
         ctx.beginPath();
         ctx.moveTo(0, purpleBaseY);
@@ -161,7 +169,8 @@ export function WaveCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      style={{ backgroundColor: "#FAFAFA" }}
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full"
       aria-hidden="true"
     />
   );

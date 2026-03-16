@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/data/site-config";
 import { JourneyGraph } from "./journey-graph";
@@ -24,9 +25,23 @@ const links = [
 ];
 
 export function HeroText() {
+  const [scrollFade, setScrollFade] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Fade out over the first 150px of scroll
+      const fade = Math.max(1 - window.scrollY / 150, 0);
+      setScrollFade(fade);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="relative z-10 flex w-full flex-col justify-between px-6 py-24 md:px-12 lg:px-20" style={{ minHeight: "100vh" }}>
-      {/* Top bar — clinical metadata */}
+      {/* Top bar — clinical metadata (fades out on scroll) */}
+      <div style={{ opacity: scrollFade }}>
       <motion.div
         custom={0}
         variants={reveal}
@@ -41,10 +56,16 @@ export function HeroText() {
           Kraków, PL
         </span>
       </motion.div>
+      </div>
 
       {/* Center — the soul + journey */}
-      <div className="my-auto flex items-center justify-between gap-12 py-16">
-        <div className="max-w-2xl">
+      <div className="relative my-auto py-16 lg:flex lg:items-center lg:justify-between lg:gap-12">
+        {/* Mobile: graph as background */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-40 lg:hidden">
+          <JourneyGraph background />
+        </div>
+
+        <div className="relative z-10 max-w-2xl">
           <motion.h1
             custom={1}
             variants={reveal}
@@ -83,7 +104,9 @@ export function HeroText() {
           </motion.div>
         </div>
 
-        <JourneyGraph />
+        <div className="hidden lg:block">
+          <JourneyGraph />
+        </div>
       </div>
 
       {/* Bottom — social links */}
@@ -92,9 +115,9 @@ export function HeroText() {
         variants={reveal}
         initial="hidden"
         animate="visible"
-        className="flex items-end justify-between"
+        className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between"
       >
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-4 sm:gap-6">
           {links.map((link) => (
             <a
               key={link.label}
@@ -107,7 +130,7 @@ export function HeroText() {
             </a>
           ))}
         </div>
-        <span className="text-[9px] uppercase tracking-[0.4em] text-black/10 md:text-[10px]">
+        <span className="hidden text-[9px] uppercase tracking-[0.4em] text-black/10 sm:inline md:text-[10px]">
           [scroll]
         </span>
       </motion.div>

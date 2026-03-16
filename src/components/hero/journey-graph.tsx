@@ -78,20 +78,22 @@ const reveal = {
   }),
 };
 
-export function JourneyGraph() {
+export function JourneyGraph({ background = false }: { background?: boolean }) {
   return (
     <motion.div
       custom={0}
       variants={reveal}
       initial="hidden"
       animate="visible"
-      className="hidden shrink-0 md:block"
+      className={
+        background
+          ? "w-full max-w-[500px]"
+          : "w-full max-w-[340px] mx-auto lg:mx-0 lg:w-[420px] lg:max-w-none lg:shrink-0 xl:w-[500px]"
+      }
     >
       <svg
-        width="500"
-        height="430"
         viewBox="0 0 500 430"
-        className="overflow-visible"
+        className="h-auto w-full max-w-[500px] overflow-visible"
       >
         {/* Edges */}
         {edges.map((edge, i) => {
@@ -145,8 +147,8 @@ export function JourneyGraph() {
             variants={reveal}
             initial="hidden"
             animate="visible"
-            style={{ cursor: "pointer" }}
-            whileHover="hovered"
+            style={{ cursor: background ? "default" : "pointer" }}
+            whileHover={background ? undefined : "hovered"}
           >
             {/* Outer ring for highlights */}
             {node.highlight && (

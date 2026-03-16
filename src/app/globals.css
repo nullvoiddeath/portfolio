@@ -68,10 +68,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background: transparent;
   }
   html {
-    @apply font-mono scroll-smooth;
+    @apply font-mono;
+    scroll-snap-type: y proximity;
   }
 }
 
@@ -98,6 +100,11 @@
 }
 .cursor-blink {
   animation: blink 1s step-end infinite;
+}
+
+/* Scroll snap sections */
+.snap-section {
+  scroll-snap-align: start;
 }
 
 /* Noise grain background */
