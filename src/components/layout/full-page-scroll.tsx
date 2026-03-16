@@ -31,9 +31,23 @@ export function FullPageScroll({ children }: FullPageScrollProps) {
     const threshold = 50; // px of scroll needed to trigger
 
     const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
       if (isAnimating) return;
 
+      const slideEl = getSlideEl();
+      if (slideEl) {
+        const isScrollable = slideEl.scrollHeight > slideEl.clientHeight;
+        if (isScrollable) {
+          const atTop = slideEl.scrollTop <= 1;
+          const atBottom = slideEl.scrollTop + slideEl.clientHeight >= slideEl.scrollHeight - 1;
+          // Allow native scroll if not at boundary
+          if ((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop)) {
+            accumulated = 0;
+            return;
+          }
+        }
+      }
+
+      e.preventDefault();
       accumulated += e.deltaY;
 
       if (Math.abs(accumulated) >= threshold) {
@@ -52,16 +66,38 @@ export function FullPageScroll({ children }: FullPageScrollProps) {
       }, 200);
     };
 
-    // Touch support
+    // Touch support — allow inner scroll, only change slides at boundaries
     let touchStartY = 0;
+    let touchStartScrollTop = 0;
+    const getSlideEl = (): HTMLElement | null => {
+      const container = containerRef.current;
+      if (!container) return null;
+      return container.children[currentSlide] as HTMLElement;
+    };
     const onTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      const slideEl = getSlideEl();
+      touchStartScrollTop = slideEl ? slideEl.scrollTop : 0;
     };
     const onTouchEnd = (e: TouchEvent) => {
       if (isAnimating) return;
       const diff = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) > 50) {
-        goToSlide(currentSlide + (diff > 0 ? 1 : -1));
+      if (Math.abs(diff) < 60) return; // minimum swipe distance
+
+      const slideEl = getSlideEl();
+      if (!slideEl) return;
+
+      const isScrollable = slideEl.scrollHeight > slideEl.clientHeight;
+      const atTop = slideEl.scrollTop <= 5;
+      const atBottom = slideEl.scrollTop + slideEl.clientHeight >= slideEl.scrollHeight - 5;
+
+      // Swiping up (next slide) — only if at bottom or not scrollable
+      if (diff > 0 && (!isScrollable || atBottom)) {
+        goToSlide(currentSlide + 1);
+      }
+      // Swiping down (prev slide) — only if at top or not scrollable
+      else if (diff < 0 && (!isScrollable || atTop)) {
+        goToSlide(currentSlide - 1);
       }
     };
 
@@ -132,7 +168,7 @@ export function FullPageScroll({ children }: FullPageScrollProps) {
         style={{ transform: `translateY(-${currentSlide * 100}vh)` }}
       >
         {children.map((child, i) => (
-          <div key={i} className="h-screen w-full">
+          <div key={i} className="h-screen w-full overflow-y-auto overflow-x-hidden">
             {child}
           </div>
         ))}

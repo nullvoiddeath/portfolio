@@ -18,7 +18,7 @@ const reveal = {
 
 export function SkillsSection() {
   return (
-    <section className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
+    <section className="noise-bg relative px-4 py-8 md:flex md:h-full md:items-center md:px-8 md:py-10 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
@@ -38,13 +38,13 @@ export function SkillsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-8 font-serif text-3xl font-medium md:text-4xl"
+          className="mt-4 font-serif text-2xl font-medium md:mt-8 md:text-4xl"
           style={{ color: "rgba(var(--t-fg), 0.80)" }}
         >
           What I work with.
         </motion.h2>
 
-        <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-6 md:mt-16 md:gap-12 lg:grid-cols-4">
           {skills.map((category, catIdx) => (
             <motion.div
               key={category.title}
@@ -54,15 +54,15 @@ export function SkillsSection() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-[10px] uppercase tracking-[0.3em]" style={{ color: "rgba(var(--t-fg), 0.50)" }}>
+              <h3 className="text-[9px] uppercase tracking-[0.3em] md:text-[10px]" style={{ color: "rgba(var(--t-fg), 0.50)" }}>
                 {category.title}
               </h3>
-              <div className="mt-4 h-px w-full" style={{ backgroundColor: "rgba(var(--t-fg), 0.10)" }} />
-              <ul className="mt-4 space-y-2">
+              <div className="mt-2 h-px w-full md:mt-4" style={{ backgroundColor: "rgba(var(--t-fg), 0.10)" }} />
+              <ul className="mt-2 space-y-1 md:mt-4 md:space-y-2">
                 {category.items.map((item) => (
                   <li
                     key={item}
-                    className="text-xs transition-colors duration-150"
+                    className="text-[10px] transition-colors duration-150 md:text-xs"
                     style={{ color: "rgba(var(--t-fg), 0.35)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.70)")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.35)")}

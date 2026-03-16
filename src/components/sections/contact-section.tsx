@@ -25,7 +25,7 @@ const contactLinks = [
 
 export function ContactSection() {
   return (
-    <section id="contact" className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
+    <section id="contact" className="noise-bg relative px-4 py-8 md:flex md:h-full md:items-center md:px-8 md:py-10 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           custom={0}
@@ -45,7 +45,7 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-8 font-serif text-3xl font-medium md:text-4xl lg:text-5xl"
+          className="mt-4 font-serif text-2xl font-medium md:mt-8 md:text-4xl lg:text-5xl"
           style={{ color: "rgba(var(--t-fg), 0.80)" }}
         >
           Let&apos;s talk.
@@ -57,14 +57,14 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-6 max-w-lg text-sm leading-relaxed md:text-base"
+          className="mt-3 max-w-lg text-xs leading-relaxed md:mt-6 md:text-base"
           style={{ color: "rgba(var(--t-fg), 0.35)" }}
         >
           Whether it&apos;s about API security, threat research, or something
           entirely different — I&apos;m always open to a conversation.
         </motion.p>
 
-        <div className="mt-16 grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-0 md:mt-16 lg:grid-cols-4">
           {contactLinks.map((link, idx) => (
             <motion.a
               key={link.label}
@@ -76,7 +76,7 @@ export function ContactSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="group py-8 transition-colors duration-200 lg:px-8"
+              className="group py-4 transition-colors duration-200 md:py-8 lg:px-8"
               style={{ borderTop: "1px solid var(--t-border)" }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = "var(--t-hover-bg)";
@@ -93,10 +93,10 @@ export function ContactSection() {
                 if (sub) sub.style.color = "rgba(var(--t-fg), 0.60)";
               }}
             >
-              <span data-label className="text-[10px] uppercase tracking-[0.3em] transition-colors duration-200" style={{ color: "var(--t-label)" }}>
+              <span data-label className="text-[9px] uppercase tracking-[0.3em] transition-colors duration-200 md:text-[10px]" style={{ color: "var(--t-label)" }}>
                 {link.label}
               </span>
-              <p data-sub className="mt-2 text-sm transition-colors duration-200" style={{ color: "rgba(var(--t-fg), 0.60)" }}>
+              <p data-sub className="mt-1 text-[10px] transition-colors duration-200 md:mt-2 md:text-sm" style={{ color: "rgba(var(--t-fg), 0.60)" }}>
                 {link.sub}
               </p>
             </motion.a>
@@ -110,13 +110,13 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-32 flex items-end justify-between pt-8"
+          className="mt-8 flex items-end justify-between pt-4 md:mt-32 md:pt-8"
           style={{ borderTop: "1px solid var(--t-border)" }}
         >
-          <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "rgba(var(--t-fg), 0.15)" }}>
+          <span className="text-[8px] uppercase tracking-[0.4em] md:text-[9px]" style={{ color: "rgba(var(--t-fg), 0.15)" }}>
             {siteConfig.name} — {new Date().getFullYear()}
           </span>
-          <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "rgba(var(--t-fg), 0.15)" }}>
+          <span className="text-[8px] uppercase tracking-[0.4em] md:text-[9px]" style={{ color: "rgba(var(--t-fg), 0.15)" }}>
             Kraków, Poland
           </span>
         </motion.div>

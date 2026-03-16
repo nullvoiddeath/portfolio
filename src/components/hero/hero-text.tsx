@@ -37,7 +37,7 @@ export function HeroText() {
   }, []);
 
   return (
-    <div className="relative z-10 flex h-full w-full flex-col justify-between px-4 py-16 md:px-8 lg:px-14">
+    <div className="relative z-10 flex h-full w-full flex-col justify-between px-4 py-10 md:px-8 md:py-16 lg:px-14">
       {/* Top bar — clinical metadata (fades out on scroll) */}
       <div style={{ opacity: scrollFade }}>
       <motion.div
@@ -57,7 +57,7 @@ export function HeroText() {
       </div>
 
       {/* Center — the soul + journey */}
-      <div className="relative my-auto py-16">
+      <div className="relative my-auto py-8 md:py-16">
         {/* Mobile: graph as background */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-40 lg:hidden">
           <JourneyGraph background />
@@ -74,7 +74,7 @@ export function HeroText() {
             variants={reveal}
             initial="hidden"
             animate="visible"
-            className="font-serif text-5xl font-medium leading-[1.05] tracking-[-0.02em] md:text-7xl lg:text-8xl"
+            className="font-serif text-4xl font-medium leading-[1.05] tracking-[-0.02em] md:text-7xl lg:text-8xl"
           >
             <span style={{ color: "var(--t-name-primary)" }}>Adhyayan</span>
             <br />

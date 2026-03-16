@@ -18,7 +18,7 @@ const reveal = {
 
 export function AboutSection() {
   return (
-    <section id="about" className="noise-bg relative flex h-full items-center px-4 py-10 md:px-8 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
+    <section id="about" className="noise-bg relative px-4 py-8 md:flex md:h-full md:items-center md:px-8 md:py-10 lg:px-14" style={{ borderTop: "1px solid var(--t-border)" }}>
       <div className="mx-auto w-full max-w-5xl">
         {/* Section label */}
         <motion.span
@@ -33,7 +33,7 @@ export function AboutSection() {
           001 — About
         </motion.span>
 
-        <div className="mt-12 grid gap-16 lg:grid-cols-[2fr_1fr]">
+        <div className="mt-6 grid gap-8 md:mt-12 md:gap-16 lg:grid-cols-[2fr_1fr]">
           {/* Left — prose */}
           <div>
             <motion.h2
@@ -42,7 +42,7 @@ export function AboutSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="font-serif text-3xl font-medium leading-snug md:text-4xl"
+              className="font-serif text-2xl font-medium leading-snug md:text-4xl"
               style={{ color: "rgba(var(--t-fg), 0.80)" }}
             >
               I break things to understand how they hold together.
@@ -54,23 +54,22 @@ export function AboutSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="mt-8 space-y-5 text-sm leading-relaxed md:text-base"
+              className="mt-4 space-y-3 text-xs leading-relaxed md:mt-8 md:space-y-5 md:text-base"
               style={{ color: "var(--t-body)" }}
             >
               <p>
                 I&apos;m a security researcher at Akamai Technologies in Kraków, Poland,
-                where I spend my days hunting threats in API traffic that processes
-                billions of requests daily. My work sits at the intersection of
-                offensive security research and defensive architecture — finding the
-                fractures before they become breaches.
+                where I hunt threats in API traffic processing billions of daily requests.
+                My work sits at the intersection of offensive research and defensive
+                architecture — finding fractures before they become breaches.
               </p>
-              <p>
+              <p className="hidden md:block">
                 Before Akamai, I cut my teeth in bug bounty programs, finding and
                 responsibly disclosing vulnerabilities in platforms like Meta and
                 BharatPe. That experience taught me something academic research
                 never could: how systems actually fail in production.
               </p>
-              <p>
+              <p className="hidden md:block">
                 I hold the OSCP, eCTHPv2, and CCD certifications — not because the
                 letters matter, but because the process of earning them reshaped how
                 I think about attack surfaces. Outside of security, I read
@@ -92,11 +91,11 @@ export function AboutSection() {
               <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
                 Certifications
               </span>
-              <div className="mt-4 space-y-4">
+              <div className="mt-3 flex gap-6 md:mt-4 md:flex-col md:gap-4">
                 {certifications.map((cert) => (
-                  <div key={cert.name} className="pl-4" style={{ borderLeft: "1px solid rgba(var(--t-fg), 0.10)" }}>
+                  <div key={cert.name} className="md:pl-4" style={{ borderLeft: "none" }}>
                     <span className="text-sm font-medium" style={{ color: "rgba(var(--t-fg), 0.70)" }}>{cert.name}</span>
-                    <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
+                    <p className="mt-0.5 hidden text-[10px] uppercase tracking-[0.2em] md:block" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
                       {cert.full}
                     </p>
                   </div>
@@ -104,43 +103,45 @@ export function AboutSection() {
               </div>
             </motion.div>
 
-            <motion.div
-              custom={4}
-              variants={reveal}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="mt-12"
-            >
-              <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
-                Currently
-              </span>
-              <div className="mt-4 pl-4" style={{ borderLeft: "1px solid rgba(var(--t-fg), 0.10)" }}>
-                <span className="text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Security Architect II</span>
-                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(var(--t-amber), 0.50)" }}>
-                  Akamai Technologies
-                </p>
-              </div>
-            </motion.div>
+            <div className="mt-6 flex gap-8 md:mt-0 md:flex-col md:gap-0">
+              <motion.div
+                custom={4}
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="md:mt-12"
+              >
+                <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
+                  Currently
+                </span>
+                <div className="mt-2 md:mt-4 md:pl-4" style={{ borderLeft: "none" }}>
+                  <span className="text-xs md:text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Security Architect II</span>
+                  <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] md:text-[10px]" style={{ color: "rgba(var(--t-amber), 0.50)" }}>
+                    Akamai Technologies
+                  </p>
+                </div>
+              </motion.div>
 
-            <motion.div
-              custom={5}
-              variants={reveal}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="mt-12"
-            >
-              <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
-                Location
-              </span>
-              <div className="mt-4 pl-4" style={{ borderLeft: "1px solid rgba(var(--t-fg), 0.10)" }}>
-                <span className="text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Kraków, Poland</span>
-                <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
-                  CET / UTC+1
-                </p>
-              </div>
-            </motion.div>
+              <motion.div
+                custom={5}
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="md:mt-12"
+              >
+                <span className="text-[9px] uppercase tracking-[0.4em]" style={{ color: "var(--t-label)" }}>
+                  Location
+                </span>
+                <div className="mt-2 md:mt-4 md:pl-4" style={{ borderLeft: "none" }}>
+                  <span className="text-xs md:text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Kraków, Poland</span>
+                  <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] md:text-[10px]" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
+                    CET / UTC+1
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
