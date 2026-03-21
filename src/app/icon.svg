@@ -5,5 +5,5 @@
       <stop offset="100%" stop-color="#DC2626"/>
     </linearGradient>
   </defs>
-  <text x="16" y="24" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="500" fill="url(#g)">Φ</text>
+  <text x="16" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="url(#g)">Φ</text>
 </svg>
