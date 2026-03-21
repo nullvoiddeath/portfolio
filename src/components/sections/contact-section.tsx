@@ -58,7 +58,7 @@ export function ContactSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="mt-3 max-w-lg text-xs leading-relaxed md:mt-6 md:text-base"
-          style={{ color: "rgba(var(--t-fg), 0.35)" }}
+          style={{ color: "rgba(var(--t-fg), 0.55)" }}
         >
           Whether it&apos;s about API security, threat research, or something
           entirely different — I&apos;m always open to a conversation.

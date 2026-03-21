@@ -94,8 +94,8 @@ export function AboutSection() {
               <div className="mt-3 flex gap-6 md:mt-4 md:flex-col md:gap-4">
                 {certifications.map((cert) => (
                   <div key={cert.name} className="md:pl-4" style={{ borderLeft: "none" }}>
-                    <span className="text-sm font-medium" style={{ color: "rgba(var(--t-fg), 0.70)" }}>{cert.name}</span>
-                    <p className="mt-0.5 hidden text-[10px] uppercase tracking-[0.2em] md:block" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
+                    <span className="text-sm font-medium" style={{ color: "rgba(var(--t-fg), 0.85)" }}>{cert.name}</span>
+                    <p className="mt-0.5 hidden text-[10px] uppercase tracking-[0.2em] md:block" style={{ color: "rgba(var(--t-fg), 0.40)" }}>
                       {cert.full}
                     </p>
                   </div>
@@ -116,7 +116,7 @@ export function AboutSection() {
                   Currently
                 </span>
                 <div className="mt-2 md:mt-4 md:pl-4" style={{ borderLeft: "none" }}>
-                  <span className="text-xs md:text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Security Architect II</span>
+                  <span className="text-xs md:text-sm" style={{ color: "rgba(var(--t-fg), 0.85)" }}>Security Architect II</span>
                   <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] md:text-[10px]" style={{ color: "rgba(var(--t-amber), 0.50)" }}>
                     Akamai Technologies
                   </p>
@@ -135,8 +135,8 @@ export function AboutSection() {
                   Location
                 </span>
                 <div className="mt-2 md:mt-4 md:pl-4" style={{ borderLeft: "none" }}>
-                  <span className="text-xs md:text-sm" style={{ color: "rgba(var(--t-fg), 0.70)" }}>Kraków, Poland</span>
-                  <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] md:text-[10px]" style={{ color: "rgba(var(--t-fg), 0.25)" }}>
+                  <span className="text-xs md:text-sm" style={{ color: "rgba(var(--t-fg), 0.85)" }}>Kraków, Poland</span>
+                  <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] md:text-[10px]" style={{ color: "rgba(var(--t-fg), 0.40)" }}>
                     CET / UTC+1
                   </p>
                 </div>

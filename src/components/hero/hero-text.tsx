@@ -126,9 +126,9 @@ export function HeroText() {
               target="_blank"
               rel="noopener noreferrer"
               className="px-1 py-0.5 text-[9px] uppercase tracking-[0.3em] transition-colors duration-150 md:text-[10px]"
-              style={{ color: "rgba(var(--t-fg), 0.35)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.70)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.35)")}
+              style={{ color: "rgba(var(--t-fg), 0.50)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.90)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.50)")}
             >
               {link.label}
             </a>

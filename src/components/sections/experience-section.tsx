@@ -69,16 +69,16 @@ export function ExperienceSection() {
 
                 {/* Right — content */}
                 <div className="flex-1">
-                  <h3 className="font-serif text-base font-medium md:text-xl" style={{ color: "rgba(var(--t-fg), 0.70)" }}>
+                  <h3 className="font-serif text-base font-medium md:text-xl" style={{ color: "rgba(var(--t-fg), 0.85)" }}>
                     {exp.role}
                   </h3>
-                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] md:text-xs" style={{ color: "rgba(var(--t-fg), 0.30)" }}>
+                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] md:text-xs" style={{ color: "rgba(var(--t-fg), 0.45)" }}>
                     {exp.company}
                   </p>
 
                   <ul className="mt-2 space-y-1 md:mt-3 md:space-y-1.5">
                     {exp.description.map((desc, i) => (
-                      <li key={i} className="flex gap-2 text-[10px] leading-relaxed md:gap-3 md:text-xs" style={{ color: "rgba(var(--t-fg), 0.35)" }}>
+                      <li key={i} className="flex gap-2 text-[10px] leading-relaxed md:gap-3 md:text-xs" style={{ color: "rgba(var(--t-fg), 0.55)" }}>
                         <span className="mt-1.5 h-px w-2 flex-shrink-0 md:w-3" style={{ backgroundColor: "rgba(var(--t-fg), 0.15)" }} />
                         {desc}
                       </li>
@@ -90,7 +90,7 @@ export function ExperienceSection() {
                       <span
                         key={tag}
                         className="px-1.5 py-0.5 text-[8px] uppercase tracking-[0.2em] md:px-2 md:text-[9px]"
-                        style={{ border: "1px solid var(--t-tag-border)", color: "rgba(var(--t-fg), 0.25)" }}
+                        style={{ border: "1px solid var(--t-tag-border)", color: "rgba(var(--t-fg), 0.40)" }}
                       >
                         {tag}
                       </span>

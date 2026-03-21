@@ -58,13 +58,13 @@ export function ResearchSection() {
             >
               <div className="flex flex-col gap-2 md:gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-2xl">
-                  <h3 className="font-serif text-base font-medium md:text-xl" style={{ color: "rgba(var(--t-fg), 0.70)" }}>
+                  <h3 className="font-serif text-base font-medium md:text-xl" style={{ color: "rgba(var(--t-fg), 0.85)" }}>
                     {item.title}
                   </h3>
                   <p className="mt-0.5 text-[9px] uppercase tracking-[0.3em] md:text-[10px]" style={{ color: "rgba(var(--t-amber), 0.50)" }}>
                     {item.subtitle}
                   </p>
-                  <p className="mt-1 text-[10px] leading-relaxed md:mt-2 md:text-xs" style={{ color: "rgba(var(--t-fg), 0.35)" }}>
+                  <p className="mt-1 text-[10px] leading-relaxed md:mt-2 md:text-xs" style={{ color: "rgba(var(--t-fg), 0.55)" }}>
                     {item.description}
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export function ResearchSection() {
                     <span
                       key={tag}
                       className="px-1.5 py-0.5 text-[8px] uppercase tracking-[0.2em] md:px-2 md:text-[9px]"
-                      style={{ border: "1px solid var(--t-tag-border)", color: "rgba(var(--t-fg), 0.25)" }}
+                      style={{ border: "1px solid var(--t-tag-border)", color: "rgba(var(--t-fg), 0.40)" }}
                     >
                       {tag}
                     </span>

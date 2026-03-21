@@ -63,9 +63,9 @@ export function SkillsSection() {
                   <li
                     key={item}
                     className="text-[10px] transition-colors duration-150 md:text-xs"
-                    style={{ color: "rgba(var(--t-fg), 0.35)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.70)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.35)")}
+                    style={{ color: "rgba(var(--t-fg), 0.55)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.90)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(var(--t-fg), 0.55)")}
                   >
                     {item}
                   </li>

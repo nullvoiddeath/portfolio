@@ -39,7 +39,7 @@
 }
 
 :root {
-  --background: #FAFAFA;
+  --background: #FFFFFF;
   --foreground: #0a0a0a;
 
   --card: #FFFFFF;
@@ -48,7 +48,7 @@
   --popover-foreground: #0a0a0a;
 
   --primary: #0a0a0a;
-  --primary-foreground: #FAFAFA;
+  --primary-foreground: #FFFFFF;
   --secondary: #F0F0F0;
   --secondary-foreground: #0a0a0a;
   --muted: #F0F0F0;
@@ -63,24 +63,24 @@
   --radius: 0px;
 
   /* Theme tokens — light */
-  --t-bg: #FAFAFA;
+  --t-bg: #FFFFFF;
   --t-fg: 0, 0, 0;
   --t-amber: 120, 80, 30;
   --t-purple: 100, 50, 150;
   --t-name-primary: rgba(0, 0, 0, 0.90);
-  --t-name-secondary: rgba(0, 0, 0, 0.35);
-  --t-body: rgba(0, 0, 0, 0.40);
-  --t-label: rgba(0, 0, 0, 0.20);
-  --t-label-hover: rgba(0, 0, 0, 0.70);
-  --t-border: rgba(0, 0, 0, 0.05);
-  --t-tag-border: rgba(0, 0, 0, 0.08);
-  --t-node: rgba(0, 0, 0, 0.35);
-  --t-node-hl: rgba(0, 0, 0, 0.70);
-  --t-edge: rgba(0, 0, 0, 0.12);
+  --t-name-secondary: rgba(0, 0, 0, 0.30);
+  --t-body: rgba(0, 0, 0, 0.65);
+  --t-label: rgba(0, 0, 0, 0.40);
+  --t-label-hover: rgba(0, 0, 0, 0.80);
+  --t-border: rgba(0, 0, 0, 0.08);
+  --t-tag-border: rgba(0, 0, 0, 0.12);
+  --t-node: rgba(0, 0, 0, 0.40);
+  --t-node-hl: rgba(0, 0, 0, 0.75);
+  --t-edge: rgba(0, 0, 0, 0.15);
   --t-wave: 0, 0, 0;
-  --t-cursor-bg: rgba(0, 0, 0, 0.30);
+  --t-cursor-bg: rgba(0, 0, 0, 0.40);
   --t-hover-bg: #0a0a0a;
-  --t-hover-fg: #FAFAFA;
+  --t-hover-fg: #FFFFFF;
   --t-scanline: rgba(0, 0, 0, 0.015);
 }
 
